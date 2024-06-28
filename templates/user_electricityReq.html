@@ -1,0 +1,55 @@
+{% extends "layout_user.html" %}
+{% block body %}
+
+<br><br>
+<center>
+<div class="card col-lg-6 border-dark" style="text-align:left;">
+  <div class="card-header" style="background-color:#47b2e4ed;">
+    <h1>Electricity Request</h1>
+  </div>
+  <br>
+  <form method="post" action="/user_electricityReq" enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-lg-12">
+      Select Document Type
+      <select class="form-control" name="ddldoctype">
+        <option>** Select Proof **</option>
+        <option>Aadhar Card</option>
+        <option>Pan Card</option>
+        <option>Licence</option>
+      </select>
+    </div>
+    <div class="col-lg-12">
+      ID Proof
+      <input type="file" name="fuidproof" class="form-control">
+    </div>
+    <div class="col-lg-12">
+      Select Type
+      <select class="form-control" name="ddltype">
+        <option>** Select Use **</option>
+        <option>Home</option>
+        <option>Shop</option>
+        <option>Business</option>
+      </select>
+    </div>
+  </div>
+
+  <br>
+  <div class="row" style="text-align:center;">
+    <div class="col-lg-12">
+      <input type="submit" class="btn btn-success">
+    </div>
+  </div>
+  </form>
+<br>
+</div>
+</center>
+<br><br>
+
+
+{% if alert_script %}
+    {{ alert_script | safe }}
+{% endif %}
+
+
+{% endblock %}

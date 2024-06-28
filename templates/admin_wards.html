@@ -1,0 +1,38 @@
+{% extends "layout_admin.html" %}
+{% block body %}
+
+<br><br>
+<div style="margin-left:40px;margin-right:40px;">
+       <table class="table table table-hover table-bordered shadow" id="admin_event_table">
+           <tr class="table-primary">
+               <th>Sr. No.</th>
+               <th>Ward No</th>
+               <th>Area Name</th>
+               <th>Land Mark</th>
+               <th>No Of Family's</th>
+               <th>No Of Voter's</th>
+               <th>Councillor Name</th>
+               <th>Councillor Mobile</th>
+               <th>Edit</th>
+               <th>Delete</th>
+           </tr>
+         {% set index = 1 %}
+            {% for ward in ward_data %}
+            <tr class="table-light">
+                <td>1</td>
+                <td>{{ward.ward_no}}</td>
+                <td>{{ward.area_name}}</td>
+                <td>{{ward.land_mark}}</td>
+                <td>{{ward.no_of_family}}</td>
+                <td>{{ward.no_of_voter}}</td>
+                <td>{{ward.councillor_name}}</td>
+                <td>{{ward.councillor_mobile}}</td>
+                <td><a href="/admin_editWard?wid={{ward.wid}}" class="btn btn-success">Edit</a></td>
+                <td><a href="/admin_deleteWard?wid={{ward.wid}}" class="btn btn-danger">Delete</a></td>
+            </tr>
+         {% set index = index + 1 %}
+            {% endfor %}
+            </table>
+            </div>
+
+{% endblock %}

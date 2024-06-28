@@ -1,0 +1,52 @@
+{% extends "layout_admin.html" %}
+{% block body %}
+
+<br><br>
+<h1 style="padding-left:50px">Electricity Requests</h1>
+<div style="margin-left:40px;margin-right:40px;">
+       <table class="table table table-hover table-bordered shadow">
+           <tr class="table-primary">
+               <th>Sr. No.</th>
+               <th>Name</th>
+               <th>Email</th>
+               <th>Mobile</th>
+               <th>Document Type</th>
+               <th>Use For</th>
+               <th>Date</th>
+               <th>ID Proof</th>
+               <th>Download</th>
+               <th>Status</th>
+               <th>Change Status</th>
+           </tr>
+            {% set index = 1 %}
+            {% for ele in ele_data %}
+            <tr class="table-light">
+                <td>{{ loop.index }}</td>
+                <td>{{ele.name}}</td>
+                <td>{{ele.email}}</td>
+                <td>{{ele.mobile}}</td>
+                <td>{{ele.document_type}}</td>
+                <td>{{ele.type}}</td>
+                <td>{{ele.req_date}}</td>
+                <td><img src="/static/upload/{{ele.doc_img}}" height="70px" width="120px"></td>
+                <td><a href="/admin_downloadEleImg?img={{ele.doc_img}}" class="btn btn-success">Download</a></td>
+                <td>{{ele.status}}</td>
+                <td>
+                    <table class="table table-borderless">
+                        <tr>
+                            <td><a href="/admin_changeEleStatus?eid={{ele.eid}}&status=Pending" class="btn btn-warning">Pending</a></td>
+                            <td><a href="/admin_changeEleStatus?eid={{ele.eid}}&status=Reject" class="btn btn-danger">Reject</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="/admin_changeEleStatus?eid={{ele.eid}}&status=In Process" class="btn btn-info">In Process</a></td>
+                            <td><a href="/admin_changeEleStatus?eid={{ele.eid}}&status=Completed" class="btn btn-success">Completed</a></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            {% set index = index + 1 %}
+            {% endfor %}
+            </table>
+            </div>
+
+{% endblock %}

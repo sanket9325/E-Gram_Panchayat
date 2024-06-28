@@ -1,0 +1,72 @@
+{% extends "layout_user.html" %}
+{% block body %}
+
+<br><br>
+<center>
+<div class="card col-lg-6 border-dark" style="text-align:left;">
+  <div class="card-header" style="background-color:#47b2e4ed;">
+    <h1>Edit Profile</h1>
+  </div>
+  <br>
+  <form method="post" action="/user_editProfile">
+  <div class="row">
+    <div class="col-lg-6">
+      Name
+      <input type="text" value="{{user_data.name}}" name="txtname" class="form-control">
+    </div>
+    <div class="col-lg-6">
+      Email
+      <input type="text" name="txtemail" value="{{user_data.email}}" class="form-control">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      Mobile
+      <input type="text" name="txtmobile" value="{{user_data.mobile}}" class="form-control">
+    </div>
+    <div class="col-lg-6">
+      Voter Id
+      <input type="text" name="txtvoter" value="{{user_data.voter_id}}" class="form-control">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      Aadhar No
+      <input type="text" name="txtaadhar" value="{{user_data.aadhar}}" class="form-control">
+    </div>
+    <div class="col-lg-6">
+      Username
+      <input type="text" name="txtusername" value="{{user_data.username}}" class="form-control">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      Address
+      <input type="text" name="txtaddress" value="{{user_data.address}}" class="form-control">
+    </div>
+  </div>
+
+  <br>
+  <div class="row" style="text-align:center;">
+    <div class="col-lg-12">
+      <input type="submit" value="Update" class="btn btn-success">
+    </div>
+  </div>
+  </form>
+<br>
+</div>
+</center>
+<br><br>
+
+
+
+
+{% if alert_script %}
+    {{ alert_script | safe }}
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends "layout_user.html" %}
+{% block body %}
+
+<br><br>
+<center>
+<div class="card col-lg-6 border-dark" style="text-align:left;">
+  <div class="card-header" style="background-color:#47b2e4ed;">
+    <h1>Complaint</h1>
+  </div>
+  <br>
+  <form method="post" action="/user_complaint" enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-lg-12">
+      Complaint Title
+      <input type="text" name="txttitle" class="form-control">
+    </div>
+    <div class="col-lg-12">
+      Complaint Message
+      <textarea rows="4" class="form-control" name="txtmsg" placeholder="Write Message here..."></textarea>
+    </div>
+    <div class="col-lg-12">
+      Image Related to Complaint
+      <input type="file" name="fuimg" class="form-control">
+    </div>
+
+  </div>
+
+  <br>
+  <div class="row" style="text-align:center;">
+    <div class="col-lg-12">
+      <input type="submit" class="btn btn-success">
+    </div>
+  </div>
+  </form>
+<br>
+</div>
+</center>
+<br><br>
+
+<h1 style="padding-left:50px">My Complaints</h1>
+<div style="margin-left:40px;margin-right:40px;">
+       <table class="table table table-hover table-bordered shadow" id="admin_event_table">
+           <tr class="table-primary">
+               <th>Sr. No.</th>
+               <th>Title</th>
+               <th>Message</th>
+               <th>Date</th>
+               <th>Status</th>
+               <th>Image</th>
+               <th>Delete</th>
+           </tr>
+            {% set index = 1 %}
+            {% for complaint in complaints_data %}
+            <tr class="table-light">
+                <td>{{ loop.index }}</td>
+                <td>{{complaint.title}}</td>
+                <td>{{complaint.message}}</td>
+                <td>{{complaint.com_date}}</td>
+                <td>{{complaint.status}}</td>
+                <td><img src="/static/upload/{{complaint.image}}" height="70px" width="120px"></td>
+                <td><a href="/user_deleteComp?cid={{complaint.cid}}" class="btn btn-danger">Delete</a></td>
+            </tr>
+            {% set index = index + 1 %}
+            {% endfor %}
+            </table>
+            </div>
+
+{% if alert_script %}
+    {{ alert_script | safe }}
+{% endif %}
+
+{% endblock %}

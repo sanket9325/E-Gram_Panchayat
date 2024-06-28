@@ -1,0 +1,71 @@
+{% extends "layout_admin.html" %}
+{% block body %}
+
+<br><br>
+<center>
+<div class="card col-lg-6 border-dark" style="text-align:left;">
+  <div class="card-header" style="background-color:#47b2e4ed;">
+    <h1>Edit Ward</h1>
+  </div>
+  <br>
+  <form method="post" action="/admin_editWard?wid={{ward_data.wid}}">
+  <div class="row">
+    <div class="col-lg-6">
+      Ward No.
+      <input type="text" value="{{ward_data.ward_no}}" name="txtwardno" class="form-control">
+    </div>
+    <div class="col-lg-6">
+      Area Name
+      <input type="text" name="txtareaname" value="{{ward_data.area_name}}" class="form-control">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      Land Mark
+      <input type="text" name="txtlandmark" value="{{ward_data.land_mark}}" class="form-control">
+    </div>
+    <div class="col-lg-6">
+      No Of Family
+      <input type="text" name="txtnooffamily" value="{{ward_data.no_of_family}}" class="form-control">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-6">
+      No Of Voter
+      <input type="text" name="txtnoofvoter" value="{{ward_data.no_of_voter}}" class="form-control">
+    </div>
+    <div class="col-lg-6">
+      Councillor Name
+      <input type="text" name="txtcounname" value="{{ward_data.councillor_name}}" class="form-control">
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-lg-12">
+      Councillor Mobile
+      <input type="text" name="txtcounmobile" value="{{ward_data.councillor_mobile}}" class="form-control">
+    </div>
+  </div>
+
+  <br>
+  <div class="row" style="text-align:center;">
+    <div class="col-lg-12">
+      <input type="submit" value="Update" class="btn btn-success">
+    </div>
+  </div>
+  </form>
+<br>
+</div>
+</center>
+<br><br>
+
+
+
+
+{% if alert_script %}
+    {{ alert_script | safe }}
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="login-dark">
+        <form method="post" action="/registration" enctype="multipart/form-data">
+            <center><h2>Registration</h2></center>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="form-group"><input class="form-control" type="text" name="txtname" placeholder="Full name" required></div>
+            <div class="form-group"><input class="form-control" type="email" name="txtemail" placeholder="Email" required></div>
+            <div class="form-group"><input class="form-control" type="tel" name="txtmobile" placeholder="Mobile" pattern="\d{10}" title="Mobile number must be 10 digits" required></div>
+            <div class="form-group"><input class="form-control" type="text" name="txtvoter" placeholder="Voter Id" required></div>
+            <div class="form-group"><input class="form-control" type="text" name="txtaadhar" placeholder="Aadhar No" pattern="\d{12}" title="Aadhaar number must be 12 digits" required></div>
+            <div class="form-group">
+                <select class="form-control" name="txtward" style="color:white;">
+                    <option style="color:black;">** Select Ward No **</option>
+                    {% for ward in ward_data %}
+                        <option style="color:black;" value="{{ward.ward_no}}">{{ward.ward_no}}</option>
+                    {% endfor %}
+                </select>
+<!--                <input class="form-control" type="text" name="txtward" placeholder="Ward No">-->
+            </div>
+            <div class="form-group"><input type="radio" value="Male" name="gender">Male <input type="radio" value="Female" name="gender">Female </div>
+            <div class="form-group"><input class="form-control" type="text" name="txtaddress" placeholder="Address" required></div>
+            <div class="form-group"><input class="form-control" type="text" name="txtusername" placeholder="Username" required></div>
+            <div class="form-group"><input class="form-control" type="password" name="txtpassword" placeholder="Password" required></div>
+            <div class="form-group"><input class="form-control" type="file" name="fuimage" placeholder="Photo"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Submit</button></div>
+        </form>
+    </div>
+
+{% if alert_script %}
+    {{ alert_script | safe }}
+{% endif %}
+
+{% endblock %}

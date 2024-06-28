@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<div class="login-dark">
+
+        <form method="post" action="/user_login">
+            <center><h2>User Login</h2></center>
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="form-group"><input class="form-control" type="text" name="txtusername" placeholder="Username"></div>
+            <div class="form-group"><input class="form-control" type="password" name="txtpassword" placeholder="Password"></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Log In</button></div>
+        </form>
+    </div>
+
+{% if alert_script %}
+    {{ alert_script | safe }}
+{% endif %}
+
+{% endblock %}

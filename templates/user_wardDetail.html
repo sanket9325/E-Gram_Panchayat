@@ -1,0 +1,30 @@
+{% extends "layout_user.html" %}
+{% block body %}
+
+<br><br>
+<div style="margin-left:40px;margin-right:40px;">
+       <table class="table table table-hover table-bordered shadow" id="admin_event_table">
+           <tr class="table-primary">
+               <th>Sr. No.</th>
+               <th>Ward No</th>
+               <th>Area Name</th>
+               <th>Land Mark</th>
+               <th>No Of Family's</th>
+               <th>No Of Voter's</th>
+               <th>Councillor Name</th>
+               <th>Councillor Mobile</th>
+           </tr>
+            <tr class="table-light">
+                <td>1</td>
+                <td>{{ward_data.ward_no}}</td>
+                <td>{{ward_data.area_name}}</td>
+                <td>{{ward_data.land_mark}}</td>
+                <td>{{ward_data.no_of_family}}</td>
+                <td>{{ward_data.no_of_voter}}</td>
+                <td>{{ward_data.councillor_name}}</td>
+                <td>{{ward_data.councillor_mobile}}</td>
+            </tr>
+            </table>
+            </div>
+
+{% endblock %}

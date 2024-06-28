@@ -1,0 +1,52 @@
+{% extends "layout_admin.html" %}
+{% block body %}
+
+<br><br>
+<div style="margin-left:40px;margin-right:40px;">
+       <table class="table table table-hover table-bordered shadow" id="admin_event_table">
+           <tr class="table-primary">
+               <th>Sr. No.</th>
+               <th>Name</th>
+               <th>Email</th>
+               <th>Mobile</th>
+               <th>Voter Id</th>
+               <th>Aadhar No</th>
+               <th>Ward No</th>
+               <th>Gender</th>
+               <th>Address</th>
+               <th>Username</th>
+               <th>Password</th>
+               <th>Photo</th>
+               <th>Status</th>
+           </tr>
+            {% set index = 1 %}
+            {% for user in user_data %}
+            <tr class="table-light">
+                <td>{{ loop.index }}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.mobile}}</td>
+                <td>{{user.voter_id}}</td>
+                <td>{{user.aadhar}}</td>
+                <td>{{user.ward_no}}</td>
+                <td>{{user.gender}}</td>
+                <td>{{user.address}}</td>
+                <td>{{user.username}}</td>
+                <td>{{user.password}}</td>
+                <td><img src="/static/upload/{{user.photo}}" style="border-radius:50%" height="50px" width="50px"></td>
+                <td>
+                    <form method="post" action="/admin_changeStatus?status={{user.status}}&id={{user.id}}">
+                        {% if user.status == 'Inactive' %}
+                            <button class="btn btn-danger">{{user.status}}</button>
+                        {% else %}
+                            <button class="btn btn-success">{{user.status}}</button>
+                        {% endif %}
+                    </form>
+                </td>
+            </tr>
+            {% set index = index + 1 %}
+            {% endfor %}
+            </table>
+            </div>
+
+{% endblock %}

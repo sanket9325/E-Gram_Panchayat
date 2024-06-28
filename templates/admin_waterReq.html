@@ -1,0 +1,53 @@
+{% extends "layout_admin.html" %}
+{% block body %}
+
+<br><br>
+<h1 style="padding-left:50px">Water Pipe Requests</h1>
+<div style="margin-left:40px;margin-right:40px;">
+       <table class="table table table-hover table-bordered shadow" id="admin_event_table">
+           <tr class="table-primary">
+               <th>Sr. No.</th>
+               <th>Name</th>
+               <th>Email</th>
+               <th>Mobile</th>
+               <th>Document Type</th>
+               <th>Use For</th>
+               <th>Date</th>
+               <th>ID Proof</th>
+               <th>Download</th>
+               <th>Status</th>
+               <th>Change Status</th>
+           </tr>
+            {% set index = 1 %}
+            {% for water in water_data %}
+            <tr class="table-light">
+                <td>{{ loop.index }}</td>
+                <td>{{water.name}}</td>
+                <td>{{water.email}}</td>
+                <td>{{water.mobile}}</td>
+                <td>{{water.document_type}}</td>
+                <td>{{water.type}}</td>
+                <td>{{water.req_date}}</td>
+                <td><img src="/static/upload/{{water.doc_img}}" height="70px" width="120px"></td>
+                <td><a href="/admin_downloadWaterImg?img={{water.doc_img}}" class="btn btn-success">Download</a></td>
+                <td>{{water.status}}</td>
+                <td>
+                    <table class="table table-borderless">
+                        <tr>
+                            <td><a href="/admin_changeWaterStatus?wpid={{water.wpid}}&status=Pending" class="btn btn-warning">Pending</a></td>
+                            <td><a href="/admin_changeWaterStatus?wpid={{water.wpid}}&status=Reject" class="btn btn-danger">Reject</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href="/admin_changeWaterStatus?wpid={{water.wpid}}&status=In Process" class="btn btn-info">In Process</a></td>
+                            <td><a href="/admin_changeWaterStatus?wpid={{water.wpid}}&status=Completed" class="btn btn-success">Completed</a></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            {% set index = index + 1 %}
+            {% endfor %}
+            </table>
+            </div>
+
+
+{% endblock %}

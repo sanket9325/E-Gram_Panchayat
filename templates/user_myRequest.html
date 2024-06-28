@@ -1,0 +1,62 @@
+{% extends "layout_user.html" %}
+{% block body %}
+
+<br><br>
+<h1 style="padding-left:50px">Electricity Requests</h1>
+<div style="margin-left:40px;margin-right:40px;">
+       <table class="table table table-hover table-bordered shadow">
+           <tr class="table-primary">
+               <th>Sr. No.</th>
+               <th>Document Type</th>
+               <th>Use For</th>
+               <th>Date</th>
+               <th>Status</th>
+               <th>ID Proof</th>
+               <th>Delete</th>
+           </tr>
+            {% set index = 1 %}
+            {% for ele in ele_data %}
+            <tr class="table-light">
+                <td>{{ loop.index }}</td>
+                <td>{{ele.document_type}}</td>
+                <td>{{ele.type}}</td>
+                <td>{{ele.req_date}}</td>
+                <td>{{ele.status}}</td>
+                <td><img src="/static/upload/{{ele.doc_img}}" height="70px" width="120px"></td>
+                <td><a href="/user_deleteEleReq?eid={{ele.eid}}" class="btn btn-danger">Delete</a></td>
+            </tr>
+            {% set index = index + 1 %}
+            {% endfor %}
+            </table>
+            </div>
+
+<br><br>
+<h1 style="padding-left:50px">Water Pipe Requests</h1>
+<div style="margin-left:40px;margin-right:40px;">
+       <table class="table table table-hover table-bordered shadow" id="admin_event_table">
+           <tr class="table-primary">
+               <th>Sr. No.</th>
+               <th>Document Type</th>
+               <th>Use For</th>
+               <th>Date</th>
+               <th>Status</th>
+               <th>ID Proof</th>
+               <th>Delete</th>
+           </tr>
+            {% set index = 1 %}
+            {% for water in water_data %}
+            <tr class="table-light">
+                <td>{{ loop.index }}</td>
+                <td>{{water.document_type}}</td>
+                <td>{{water.type}}</td>
+                <td>{{water.req_date}}</td>
+                <td>{{water.status}}</td>
+                <td><img src="/static/upload/{{water.doc_img}}" height="70px" width="120px"></td>
+                <td><a href="/user_deleteWaterReq?wpid={{water.wpid}}" class="btn btn-danger">Delete</a></td>
+            </tr>
+            {% set index = index + 1 %}
+            {% endfor %}
+            </table>
+            </div>
+
+{% endblock %}
